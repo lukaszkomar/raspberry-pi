@@ -13,7 +13,8 @@ D1_DP = 0
 DIOD_ON = 0
 DIOD_OFF= 1
 
-sleeptime = 1
+sleeptime = 0.001
+frameSpeed = 1
 
 #GPIO.setmode(GPIO.BOARD)
 GPIO.setmode(GPIO.BCM)
@@ -24,7 +25,7 @@ GPIO.setup(D1_E , GPIO.OUT)
 GPIO.setup(D1_F , GPIO.OUT)
 
 frame = {
-    D1_C: DIOD_OFF,
+    D1_C: DIOD_ON,
     D1_D: DIOD_ON,
     D1_E: DIOD_ON,
     D1_F: DIOD_ON,
@@ -32,10 +33,11 @@ frame = {
 
 try:
     while True:
-        for pin, val in frame.iteritems():
-            GPIO.output(pin, val)
-            time.sleep(sleeptime)
-            GPIO.output(pin, DIOD_OFF)
+        for i in frameSpeed:
+            for pin, val in frame.iteritems():
+                GPIO.output(pin, val)
+                time.sleep(sleeptime)
+                GPIO.output(pin, DIOD_OFF)
 
 except KeyboardInterrupt:
     GPIO.cleanup()
