@@ -13,7 +13,7 @@ D1_DP = 0
 DIOD_ON = 0
 DIOD_OFF= 1
 
-sleeptime = 1000
+sleeptime = 1.0
 frameSpeed = 1
 
 #GPIO.setmode(GPIO.BOARD)
@@ -33,18 +33,16 @@ frame = {
 
 try:
     while True:
-        if sleeptime > 10:
-            sleeptime = sleeptime - 10
+        if sleeptime > 0.010:
+            sleeptime -= 0.010
 
         print sleeptime
-        print sleeptime/1000
 
         for i in range(frameSpeed):
             for pin, val in frame.iteritems():
                 GPIO.output(pin, val)
-                time.sleep(sleeptime/1000)
+                time.sleep(sleeptime)
                 GPIO.output(pin, DIOD_OFF)
-
 
 except KeyboardInterrupt:
     GPIO.cleanup()
