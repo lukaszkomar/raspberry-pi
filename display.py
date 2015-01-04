@@ -16,8 +16,6 @@ DIOD_OFF= 1
 sleeptime = 1000
 frameSpeed = 1
 
-GPIO.cleanup()
-
 #GPIO.setmode(GPIO.BOARD)
 GPIO.setmode(GPIO.BCM)
 
@@ -37,6 +35,9 @@ try:
     while True:
         if sleeptime > 10:
             sleeptime = sleeptime - 10
+
+        print sleeptime
+        print sleeptime/1000
 
         for i in range(frameSpeed):
             for pin, val in frame.iteritems():
