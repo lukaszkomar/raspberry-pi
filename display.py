@@ -13,7 +13,7 @@ D1_DP = 0
 DIOD_ON = 0
 DIOD_OFF= 1
 
-sleeptime = 1.0
+sleeptime = 0.200
 frameSpeed = 1
 
 #GPIO.setmode(GPIO.BOARD)
@@ -33,8 +33,11 @@ frame = {
 
 try:
     while True:
-        if sleeptime > 0.010:
+        if sleeptime > 0.011:
             sleeptime -= 0.010
+	else:
+	    if sleeptime > 0.002:
+                sleeptime -= 0.001 
 
         print sleeptime
 
