@@ -35,13 +35,15 @@ frame = {
 
 try:
     while True:
+        if sleeptime > 10:
+            sleeptime = sleeptime - 10
+
         for i in range(frameSpeed):
             for pin, val in frame.iteritems():
                 GPIO.output(pin, val)
                 time.sleep(sleeptime/1000)
-                if sleeptime > 10:
-                    sleeptime = sleeptime - 10
                 GPIO.output(pin, DIOD_OFF)
+
 
 except KeyboardInterrupt:
     GPIO.cleanup()
