@@ -32,12 +32,10 @@ frame = {
 
 try:
     while True:
-
         for pin, val in frame.iteritems():
-
             GPIO.output(pin, val)
             time.sleep(sleeptime)
-            GPIO.output(pin, 0)
+            GPIO.output(pin, DIOD_OFF)
 
 except KeyboardInterrupt:
     GPIO.cleanup()
