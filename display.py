@@ -35,8 +35,8 @@ try:
     while True:
         if sleeptime > 0.011:
             sleeptime -= 0.010
-	else:
-	    if sleeptime > 0.002:
+        else:
+            if sleeptime > 0.002:
                 sleeptime -= 0.001 
 
         print sleeptime
