@@ -37,6 +37,7 @@ try:
 
             GPIO.output(pin, val)
             time.sleep(sleeptime)
+            GPIO.output(pin, 0)
 
 except KeyboardInterrupt:
     GPIO.cleanup()
